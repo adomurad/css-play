@@ -1,0 +1,107 @@
+---
+import { Image, getImage } from "astro:assets";
+import beachImage from "../images/beach.jpg";
+
+const optimizedBeachBg = await getImage({
+  src: beachImage,
+  width: "64",
+  format: "webp",
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background image fallback</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Background Image Fallback</h1>
+      <div>
+        This image is way to big (should be optimized) but you can use a small
+        background-image to load first.
+      </div>
+      <div>Use "slow 3G" throttling to see the effect.</div>
+
+      <h2>Way to big image</h2>
+      <div>This image is way to big!</div>
+      <img
+        class="big-image"
+        src={beachImage.src}
+        alt="A nice beach image"
+        style={`background-image: url(${optimizedBeachBg.src})`}
+      />
+      <div>Hope there is not jumping...</div>
+
+      <h2>Optimized WEBP</h2>
+      <div>This one was optimised!</div>
+      <Image
+        class="big-image"
+        src={beachImage}
+        width={640}
+        alt="A nice beach image"
+        style={`background-image: url(${optimizedBeachBg.src})`}
+      />
+      <div>Hope there is not jumping...</div>
+
+      <h2>Optimized JPG</h2>
+      <div>This one was optimised!</div>
+      <Image
+        class="big-image"
+        src={beachImage}
+        width={640}
+        format="jpg"
+        alt="A nice beach image"
+        style={`background-image: url(${optimizedBeachBg.src})`}
+      />
+      <div>Hope there is not jumping...</div>
+
+      <footer>A fake footer to expand the bottom of the page.</footer>
+    </main>
+
+    <style>
+      :root {
+        --bg-color: rgb(36, 32, 56);
+        --primary: rgb(144, 103, 198);
+        --primary-light: rgb(141, 134, 201);
+        --secondary: rgb(202, 196, 206);
+        --secondary-light: rgb(247, 236, 225);
+      }
+
+      html {
+        background-color: var(--bg-color);
+        font-family: system-ui, sans-serif;
+        font-weight: normal;
+        color: var(--secondary-light);
+        box-sizing: border-box;
+        line-height: 1.8;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      img {
+        display: inline-block;
+      }
+
+      footer {
+        margin-top: 10rem;
+      }
+
+      .container {
+        max-width: 40rem;
+      }
+
+      .big-image {
+        aspect-ratio: 4/3;
+        width: 100%;
+        height: auto;
+        background-size: contain;
+      }
+    </style>
+  </body>
+</html>
