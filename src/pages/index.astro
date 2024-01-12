@@ -1,16 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const [backgroundImageFallbackPage] = await Astro.glob(
-  "./background-image-fallback.astro"
-);
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>Welcome to <span class="text-gradient">Astro</span></h1>
 
-    <a href={backgroundImageFallbackPage.url}>Background Image Fallback</a>
+    <a href="background-image-fallback">Background Image Fallback</a>
+    <a href="trigonometry">Trigonometry</a>
   </main>
 </Layout>
 
