@@ -1,0 +1,220 @@
+---
+import planksImg from "../images/planks.jpg";
+
+const planksImgUrl = `url(${planksImg.src})`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Effects</title>
+  </head>
+  <body>
+    <main>
+      <h1>5 fun<span>(and easy)</span><br /> css effects</h1>
+      <div>
+        Lorem, ipsum dolor sit
+        <a href="#" class="fancy">
+          amet consectetur adipisicing elit. Expedita perferendis distinctio
+          quos! Deleniti aperiam ad, atque magni, excepturi
+        </a>
+        facere voluptatem neque doloribus laudantium dolor commodi? Excepturi nemo
+        modi quasi magnam.
+      </div>
+      <hr />
+      <div>
+        Lorem ipsum dolor sit, <a href="#" class="fancy">amet consectetur</a> adipisicing
+        elit. Asperiores labore fugit quasi nulla in facere, quos exercitationem
+        repellendus! Autem animi deleniti voluptates ipsa nesciunt est soluta quaerat
+        ullam ipsam dolor.
+      </div>
+
+      <h2 class="image">Image text example</h2>
+      <div>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas ex
+        aut obcaecati sunt. Obcaecati, repudiandae! Veritatis eum, laborum iure
+        cumque ad reiciendis accusamus ex corrupti omnis quam eveniet ut
+        maiores?.
+      </div>
+
+      <h2 class="gradient">Image text example</h2>
+      <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates
+        minus nostrum voluptatum corporis rem doloremque. Enim numquam
+        accusantium error. Ad perferendis error esse sapiente eos ducimus ex
+        quos quo praesentium.
+      </div>
+
+      <h2 class="gradient">Image text</h2>
+      <div>
+        Lorem ipsum dolor,
+        <a href="#" class="moving">
+          sit amet consectetur adipisicing elit. Voluptates minus
+        </a>
+        nostrum voluptatum corporis rem doloremque. Enim numquam accusantium error.
+        Ad perferendis error esse sapiente eos ducimus ex quos quo praesentium.
+      </div>
+    </main>
+
+    <footer>Fake footer</footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg-color: #0d1b2a;
+    --c1: #f72585;
+    --c2: #7209b7;
+    --c3: #3a0ca3;
+    --c4: #4361ee;
+    --c5: #4cc9f0;
+
+    --handwritten-font: "Segoe Print", "Bradley Hand", Chilanka, TSCu_Comic,
+      casual, cursive;
+  }
+
+  html {
+    color: white;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    box-sizing: border-box;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  main {
+    max-width: 40rem;
+  }
+
+  footer {
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    position: relative;
+    text-align: center;
+    font-size: 4rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    text-shadow:
+      2px 2px 0 var(--c1),
+      4px 4px 0 var(--c2),
+      6px 6px 0 var(--c3);
+  }
+
+  h1 > span {
+    font-family: var(--handwritten-font);
+    font-size: 1rem;
+    text-transform: none;
+    position: absolute;
+    top: calc(4rem * 0.75);
+    transform: skew(-6deg, -6deg);
+
+    text-shadow: none;
+  }
+
+  hr {
+    --size: 2px;
+    --margin: 1rem;
+
+    border: 0;
+    height: var(--size);
+    background: white;
+
+    margin-top: var(--margin);
+    margin-bottom: calc(var(--margin) + (var(--size) * 6) - 2px);
+
+    border-radius: 100vh;
+    box-shadow:
+      0 calc(var(--size) * 2) 0 var(--c1),
+      0 calc(var(--size) * 4) 0 var(--c2),
+      0 calc(var(--size) * 6) 0 var(--c3);
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+    color: var(--c5);
+  }
+
+  a.fancy {
+    background-image: linear-gradient(90deg, red, blue);
+
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    background-position: left 1lh;
+    /* background-position: left 1.4em; */
+    padding-block: 0.25em;
+
+    transition:
+      background-size 500ms,
+      color 500ms;
+  }
+
+  a.fancy:hover,
+  a.fancy:focus {
+    color: white;
+    background-size: 100% 3px;
+  }
+
+  a.moving {
+    background-image: linear-gradient(
+      90deg,
+      red,
+      blue 50%,
+      currentColor 50%,
+      currentColor
+    );
+
+    background-size: 200% 3px;
+    background-repeat: no-repeat;
+    background-position: right 1lh;
+    padding-block: 0.25em;
+
+    transition:
+      background-position: 500ms,
+      color 500ms;
+  }
+
+  a.moving:hover,
+  a.moving:focus {
+    color: white;
+    background-position: left 1lh;
+  }
+
+  h2 {
+    font-size: 3.8rem;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  h2.gradient {
+    width: fit-content;
+    background-image: linear-gradient(90deg, red, blue);
+    background-clip: text;
+    color: transparent;
+  }
+</style>
+
+<style define:vars={{ planksImgUrl }}>
+  h2.image {
+    background-image: var(--planksImgUrl);
+    background-size: 100rem;
+    /* background-size: cover; */
+    background-clip: text;
+    color: transparent;
+    /* color: rgb(0 0 0 / 0.3); */
+  }
+</style>
