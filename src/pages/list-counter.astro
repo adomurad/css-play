@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Counter</title>
+  </head>
+  <body>
+    <main>
+      <h2 class="section-title">Intro</h2>
+      <h2 class="section-title">Body</h2>
+      <div class="sub-section">
+        <h3 class="section-title">Sub 1</h3>
+        <h3 class="section-title">Sub 2</h3>
+        <h3 class="section-title">Sub 3</h3>
+      </div>
+      <h2 class="section-title">Conclusion</h2>
+
+      <ol>
+        <li>Lorem</li>
+        <li>ipsum</li>
+        <li>dolor</li>
+        <ol>
+          <li>sit</li>
+          <li>amet</li>
+          <li>consectetur</li>
+          <ol>
+            <li>adipisicing</li>
+            <li>elit</li>
+          </ol>
+          <li>tenetur</li>
+          <li>praesentium</li>
+        </ol>
+        <li>laborum</li>
+      </ol>
+    </main>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: Rockwell, "Rockwell Nova", "Roboto Slab", "DejaVu Serif",
+      "Sitka Small", serif;
+    font-weight: normal;
+
+    line-height: 1.6em;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+
+    /* counter-reset: heading; */
+  }
+
+  .section-title {
+    counter-increment: heading;
+  }
+
+  .section-title::before {
+    content: "Part " counter(heading, upper-roman) ": ";
+    /* counter-increment: heading; */
+  }
+
+  .sub-section {
+    contain: style;
+  }
+
+  ol {
+    list-style: none;
+    counter-reset: my-list-counter;
+  }
+
+  li::before {
+    counter-increment: my-list-counter;
+    content: counters(my-list-counter, ".") ". ";
+  }
+</style>

@@ -1,0 +1,97 @@
+---
+import { Image, getImage } from "astro:assets";
+
+import laptopImg from "../images/laptop2.jpg";
+import forestImg from "../images/forest.jpg";
+
+const optLaptopImg = await getImage({
+  src: laptopImg,
+  width: "400",
+  format: "webp",
+});
+const optForestImg = await getImage({
+  src: forestImg,
+  width: "400",
+  format: "webp",
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List Counter</title>
+  </head>
+  <body>
+    <div class="card">
+      <a href="#">Laptop</a>
+      <img src={optLaptopImg.src} alt="" />
+    </div>
+    <div class="card">
+      <a href="#">Forest</a>
+      <img src={optForestImg.src} alt="" />
+    </div>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg-color: #0d1b2a;
+    /* --card-color: #415a77; */
+    --card-color: #1b263b;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    font-weight: normal;
+
+    line-height: 1.6em;
+    color: white;
+  }
+
+  body {
+    padding: 0;
+    padding-block: 3rem;
+    padding-inline: 1rem;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+
+    background-color: var(--bg-color);
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+    font-size: 1.4em;
+  }
+
+  .card {
+    padding: 1rem 3rem 3rem;
+    border-radius: 6px;
+    background-color: var(--card-color);
+
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card > img {
+    border-radius: 6px;
+    filter: grayscale(100%) contrast(200%);
+    transition: filter 500ms ease;
+    max-width: 100%;
+    display: inline-block;
+  }
+
+  .card:hover > img,
+  .card:focus-within > img {
+    filter: grayscale(0%) contrast(100%);
+  }
+</style>

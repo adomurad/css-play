@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Tooltip</title>
+  </head>
+  <body>
+    <button data-tooltip="This button does nothing!">Click Me</button>
+  </body>
+</html>
+
+<style>
+  :root {
+    --col-1: #cdb4db;
+    --col-2: #ffc8dd;
+    --col-3: #ffafcc;
+    --col-4: #bde0fe;
+    --col-5: #a2d2ff;
+    --col-6: #6b6b6b;
+
+    --col-2-darker-1: #f4a4bf; /* Darker variation 1 */
+
+    --col-3-darker-1: #f386a4; /* Darker variation 1 */
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    font-family: ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa,
+      Manjari, "Arial Rounded MT", "Arial Rounded MT Bold", Calibri,
+      source-sans-pro, sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    color: var(--col-6);
+  }
+  body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+
+    background-color: var(--col-4);
+  }
+
+  button {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: var(--col-2);
+    padding: 1rem 2rem;
+    border: 5px solid var(--col-3);
+    cursor: pointer;
+    border-radius: 2px;
+
+    transition:
+      background-color 200ms,
+      border-color 200ms;
+  }
+
+  button:hover {
+    background-color: var(--col-2-darker-1);
+    border-color: var(--col-3-darker-1);
+  }
+
+  [data-tooltip] {
+    position: relative;
+  }
+
+  [data-tooltip]::before {
+    /* content: ""; */
+    opacity: 0;
+    /* opacity: 1; */
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: var(--col-1);
+    padding: 1rem;
+    border-radius: 2px;
+    width: max-content;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%, -100%) scale(0.9);
+
+    transition:
+      opacity 500ms,
+      transform 200ms;
+  }
+
+  [data-tooltip]:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+</style>
