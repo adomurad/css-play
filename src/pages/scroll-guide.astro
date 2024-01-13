@@ -1,0 +1,530 @@
+---
+import { getImage } from "astro:assets";
+import winterImg from "../images/winter-1.jpg";
+import winterKayakImg from "../images/winter-kayak.jpg";
+
+const optWinterKayakImg = await getImage({
+  src: winterKayakImg,
+  width: "800",
+  format: "webp",
+});
+
+// const winterBgImg = `url(${winterImg.src})`;
+
+const scrollItems = [
+  "Ice",
+  "Snow",
+  "Winter",
+  "Frost",
+  "Cold",
+  "Scroll",
+  "Animation",
+  "HTML",
+  "CSS",
+  "JavaScript",
+];
+// const doubleScrollItems = [...scrollItems, ...scrollItems];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Guide</title>
+  </head>
+  <body>
+    <div class="scroll-guide"></div>
+    <main>
+      <section class="heading">
+        <img class="heading-image" src={winterImg.src} alt="" />
+        <div class="container heading-content">
+          <h1>Scroll-driven animations</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+            perspiciatis ipsam debitis pariatur iusto aperiam voluptas nihil
+            aliquam, quia officia explicabo autem eveniet atque adipisci in nisi
+            fugit eaque consequuntur!
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
+            autem earum dolore quia fuga veniam cum deserunt magnam atque
+            suscipit, asperiores beatae praesentium maxime enim debitis deleniti
+            officiis repudiandae consectetur?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+            suscipit deserunt debitis earum veniam, dolores facere odio a
+            deleniti nihil incidunt minus, omnis rem sed, neque cum adipisci
+            nulla officiis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
+            facilis ut dolorem reprehenderit dicta repellat suscipit repudiandae
+            repellendus, voluptatem iusto a. Neque animi atque maiores explicabo
+            obcaecati, voluptas sint ad.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            facilis ratione iusto quo voluptatibus culpa minus a voluptates
+            temporibus consequatur, iste, nobis cum fugiat recusandae unde
+            exercitationem obcaecati est nihil!
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+            molestiae perferendis similique quibusdam unde aliquid libero ea
+            quam, quae numquam non, repellat laboriosam repudiandae veritatis
+            repellendus. Omnis doloremque dolorem ratione?
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+            unde repellat rem fuga quae amet, molestiae, incidunt iure veniam
+            placeat sed sequi explicabo soluta dolor nobis laboriosam hic at.
+            Non?
+          </p>
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <img class="fade-in" src={optWinterKayakImg.src} alt="" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
+            autem earum dolore quia fuga veniam cum deserunt magnam atque
+            suscipit, asperiores beatae praesentium maxime enim debitis deleniti
+            officiis repudiandae consectetur?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+            suscipit deserunt debitis earum veniam, dolores facere odio a
+            deleniti nihil incidunt minus, omnis rem sed, neque cum adipisci
+            nulla officiis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
+            facilis ut dolorem reprehenderit dicta repellat suscipit repudiandae
+            repellendus, voluptatem iusto a. Neque animi atque maiores explicabo
+            obcaecati, voluptas sint ad.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            facilis ratione iusto quo voluptatibus culpa minus a voluptates
+            temporibus consequatur, iste, nobis cum fugiat recusandae unde
+            exercitationem obcaecati est nihil!
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+            molestiae perferendis similique quibusdam unde aliquid libero ea
+            quam, quae numquam non, repellat laboriosam repudiandae veritatis
+            repellendus. Omnis doloremque dolorem ratione?
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+            unde repellat rem fuga quae amet, molestiae, incidunt iure veniam
+            placeat sed sequi explicabo soluta dolor nobis laboriosam hic at.
+            Non?
+          </p>
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
+            autem earum dolore quia fuga veniam cum deserunt magnam atque
+            suscipit, asperiores beatae praesentium maxime enim debitis deleniti
+            officiis repudiandae consectetur?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+            suscipit deserunt debitis earum veniam, dolores facere odio a
+            deleniti nihil incidunt minus, omnis rem sed, neque cum adipisci
+            nulla officiis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
+            facilis ut dolorem reprehenderit dicta repellat suscipit repudiandae
+            repellendus, voluptatem iusto a. Neque animi atque maiores explicabo
+            obcaecati, voluptas sint ad.
+          </p>
+          <div class="auto-scroller" data-direction="left">
+            <div class="auto-scroller-content">
+              {scrollItems.map((item) => <div class="tag">{item}</div>)}
+              {
+                scrollItems.map((item) => (
+                  <div class="tag" aria-hidden>
+                    {item}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="auto-scroller" data-direction="right">
+            <div class="auto-scroller-content">
+              {scrollItems.map((item) => <div class="tag">{item}</div>)}
+              {
+                scrollItems.map((item) => (
+                  <div class="tag" aria-hidden>
+                    {item}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            facilis ratione iusto quo voluptatibus culpa minus a voluptates
+            temporibus consequatur, iste, nobis cum fugiat recusandae unde
+            exercitationem obcaecati est nihil!
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+            molestiae perferendis similique quibusdam unde aliquid libero ea
+            quam, quae numquam non, repellat laboriosam repudiandae veritatis
+            repellendus. Omnis doloremque dolorem ratione?
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+            unde repellat rem fuga quae amet, molestiae, incidunt iure veniam
+            placeat sed sequi explicabo soluta dolor nobis laboriosam hic at.
+            Non?
+          </p>
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
+            autem earum dolore quia fuga veniam cum deserunt magnam atque
+            suscipit, asperiores beatae praesentium maxime enim debitis deleniti
+            officiis repudiandae consectetur?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+            suscipit deserunt debitis earum veniam, dolores facere odio a
+            deleniti nihil incidunt minus, omnis rem sed, neque cum adipisci
+            nulla officiis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
+            facilis ut dolorem reprehenderit dicta repellat suscipit repudiandae
+            repellendus, voluptatem iusto a. Neque animi atque maiores explicabo
+            obcaecati, voluptas sint ad.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            facilis ratione iusto quo voluptatibus culpa minus a voluptates
+            temporibus consequatur, iste, nobis cum fugiat recusandae unde
+            exercitationem obcaecati est nihil!
+          </p>
+          <div class="scroller" data-direction="left">
+            <div class="scroller-content">
+              {scrollItems.map((item) => <div class="tag">{item}</div>)}
+              {
+                scrollItems.map((item) => (
+                  <div class="tag" aria-hidden>
+                    {item}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="scroller" data-direction="right">
+            <div class="scroller-content">
+              {scrollItems.map((item) => <div class="tag">{item}</div>)}
+              {
+                scrollItems.map((item) => (
+                  <div class="tag" aria-hidden>
+                    {item}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+            molestiae perferendis similique quibusdam unde aliquid libero ea
+            quam, quae numquam non, repellat laboriosam repudiandae veritatis
+            repellendus. Omnis doloremque dolorem ratione?
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+            unde repellat rem fuga quae amet, molestiae, incidunt iure veniam
+            placeat sed sequi explicabo soluta dolor nobis laboriosam hic at.
+            Non?
+          </p>
+          <h2>Lorem ipsum dolor sit amet</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident
+            autem earum dolore quia fuga veniam cum deserunt magnam atque
+            suscipit, asperiores beatae praesentium maxime enim debitis deleniti
+            officiis repudiandae consectetur?
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore
+            suscipit deserunt debitis earum veniam, dolores facere odio a
+            deleniti nihil incidunt minus, omnis rem sed, neque cum adipisci
+            nulla officiis.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
+            facilis ut dolorem reprehenderit dicta repellat suscipit repudiandae
+            repellendus, voluptatem iusto a. Neque animi atque maiores explicabo
+            obcaecati, voluptas sint ad.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            facilis ratione iusto quo voluptatibus culpa minus a voluptates
+            temporibus consequatur, iste, nobis cum fugiat recusandae unde
+            exercitationem obcaecati est nihil!
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+            molestiae perferendis similique quibusdam unde aliquid libero ea
+            quam, quae numquam non, repellat laboriosam repudiandae veritatis
+            repellendus. Omnis doloremque dolorem ratione?
+          </p>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti
+            unde repellat rem fuga quae amet, molestiae, incidunt iure veniam
+            placeat sed sequi explicabo soluta dolor nobis laboriosam hic at.
+            Non?
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer>Fake footer to streach the page</footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --c1: #ccd5ae;
+    --c2: #e9edc9;
+    --c3: #fefae0;
+    --c4: #faedcd;
+    --c5: #d4a373;
+    --c7: #32425798;
+
+    --c6: #1d3557;
+
+    /* --text-color: black; */
+    --text-color: var(--c6);
+    --accent-color: var(--c5);
+    --bg-color: var(--c4);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: Optima, Candara, "Noto Sans", source-sans-pro, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+    line-height: 1.4em;
+
+    color: var(--text-color);
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-color);
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .scroll-guide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 12px;
+    width: 100%;
+    background-color: var(--accent-color);
+    scale: 0 1;
+
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll(y);
+  }
+
+  @keyframes scroll-watcher {
+    to {
+      scale: 1 1;
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .container {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  .heading {
+    height: 100svh;
+    /* background-color: #ccd5ae; */
+    /* background-image: var(--winterBgImg); */
+    /* background-size: cover; */
+
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+  .heading-image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0.8;
+    /* transform-origin: bottom; */
+    animation: header-image-animation linear forwards;
+    animation-timeline: view();
+    animation-range: exit;
+  }
+
+  .heading-content {
+    /* height: 100%; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center; */
+
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -200px;
+  }
+
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes header-image-animation {
+    25% {
+      opacity: 1;
+    }
+    85%,
+    100% {
+      opacity: 0;
+      scale: 3;
+    }
+  }
+
+  h1 {
+    font-size: 2.4em;
+    line-height: 1em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    margin-top: 3.5rem;
+  }
+
+  .fade-in {
+    scale: 0.8;
+    opacity: 0;
+
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    /* animation-timeline: view(auto -100%); */
+    /* animation-range-start: cover; */
+    /* animation-range-start: contain; */
+    /* animation-range-end: 700px; */
+    /* animation-range-end: contain; */
+    /* animation-range: 250px 500px; */
+    /* animation-range: entry-crossing; */
+    animation-range: entry;
+  }
+
+  @keyframes fade-in {
+    /* from {
+      scale: 0.8;
+      opacity: 0;
+    } */
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+  .auto-scroller {
+    overflow: hidden;
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white 10%,
+      white 90%,
+      transparent
+    );
+  }
+
+  .auto-scroller-content {
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+
+    padding-block: 1rem;
+
+    animation: auto-scroller 40s var(--_animation-direction, forwards) linear
+      infinite;
+  }
+
+  .auto-scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+
+  @keyframes auto-scroller {
+    to {
+      transform: translate(calc(-50% - 0.5rem)); /* sub half of gap */
+    }
+  }
+
+  .scroller {
+    overflow: hidden;
+    mask: linear-gradient(
+      90deg,
+      transparent,
+      white 10%,
+      white 90%,
+      transparent
+    );
+  }
+
+  .scroller-content {
+    width: fit-content;
+    display: flex;
+    gap: 1rem;
+
+    padding-block: 1rem;
+
+    animation: auto-scroller var(--_animation-direction, forwards) linear;
+    animation-timeline: scroll(root);
+  }
+
+  .scroller[data-direction="right"] {
+    --_animation-direction: reverse;
+  }
+
+  .tag {
+    background-color: var(--c5);
+    padding: 0.6rem;
+    border-radius: 6px;
+    box-shadow: 0px 6px 10px var(--c7);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+  }
+</style>
