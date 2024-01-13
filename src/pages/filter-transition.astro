@@ -105,8 +105,7 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
   }
   setInitialFilters();
 
-  window.addEventListener('popstate', function(event) {
-    console.log('change')
+  window.addEventListener('hashchange', function(event) {
     setInitialFilters();
   });
 
