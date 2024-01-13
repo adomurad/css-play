@@ -87,35 +87,40 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
 
 <script>
   declare global {
-  interface Document {
-    startViewTransition(callback: () => void): void;
-    // Add any additional properties or methods you need
+    interface Document {
+      startViewTransition(callback: () => void): void;
+      // Add any additional properties or methods you need
+    }
   }
-}
 
   function setInitialFilters() {
-    if(window.location.hash) {
+    // if(window.location.hash) {
       const value = window.location.hash.substring(1);
 
       document.startViewTransition(() => {
         setActiveFilter(value);
         filterList(value);
       });
-    }
+    // }
   }
   setInitialFilters();
 
-  document.querySelectorAll('.filter').forEach(tagButton => {
-    tagButton.addEventListener('click', (evt) => {
-      const btn = evt.target as HTMLElement;
-      const filterValue = btn.dataset.value || '';
+  window.addEventListener('popstate', function(event) {
+    console.log('change')
+    setInitialFilters();
+  });
 
-      document.startViewTransition(() => {
-        setActiveFilter(filterValue);
-        filterList(filterValue);
-      })
-    })
-  })
+  // document.querySelectorAll('.filter').forEach(tagButton => {
+  //   tagButton.addEventListener('click', (evt) => {
+  //     const btn = evt.target as HTMLElement;
+  //     const filterValue = btn.dataset.value || '';
+
+  //     document.startViewTransition(() => {
+  //       setActiveFilter(filterValue);
+  //       filterList(filterValue);
+  //     })
+  //   })
+  // })
 
   function setActiveFilter(value: string) {
     document.querySelectorAll('.filter').forEach(el => {
