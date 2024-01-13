@@ -1,0 +1,217 @@
+---
+const navItems = [
+  {
+    name: "Home",
+    link: "#home",
+    active: true,
+  },
+  {
+    name: "About",
+    link: "#about",
+  },
+  {
+    name: "Contact",
+    link: "#contact",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Nav</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        {
+          navItems.map((item) => (
+            <li class="nav-item" data-nav={item.link}>
+              <div class="link-bg" />
+              <a href={item.link}>{item.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <main>
+      <h1>Animated Navigation</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod, pariatur
+        ducimus quis doloribus sed enim earum accusantium quaerat, tempora
+        distinctio obcaecati laboriosam dignissimos dolores tenetur ipsum
+        voluptate error dolorem. Dolore?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quaerat
+        laudantium neque tempora illum nobis culpa facere deserunt? Non mollitia
+        exercitationem impedit debitis magnam illo tempore error ducimus
+        explicabo? Consequuntur.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nam
+        eaque repellat, accusantium eveniet assumenda dolore quidem quibusdam
+        consequuntur ipsum consectetur aliquam provident pariatur asperiores
+        dolores recusandae quia labore necessitatibus.
+      </p>
+    </main>
+  </body>
+</html>
+
+<script>
+  declare global {
+    interface Document {
+      startViewTransition(callback: () => void): void;
+    }
+  }
+
+  window.addEventListener("hashchange", function (event) {
+    setActiveNavItem(window.location.hash);
+  });
+
+  setActiveNavItem(window.location.hash);
+
+  function setActiveNavItem(hash: string) {
+    document.startViewTransition(() => {
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        const navItem = item as HTMLElement;
+        const navHash = navItem.dataset.nav;
+        if (navHash === hash || (hash === "" && navHash === "#home")) {
+          navItem.classList.add("active");
+        } else {
+          navItem.classList.remove("active");
+        }
+      });
+    });
+  }
+</script>
+
+<style>
+  :root {
+    --c1: #8ecae6;
+    --c2: #219ebc;
+    --c3: #023047;
+    --c4: #ffb703;
+    --c5: #fb8500;
+
+    --text-color: black;
+    --text-color-dark: white;
+    --bg-color: var(--c3);
+    --nav-bg-color: var(--c5);
+  }
+
+  html {
+    font-family: ui-rounded, "Hiragino Maru Gothic ProN", Quicksand, Comfortaa,
+      Manjari, "Arial Rounded MT", "Arial Rounded MT Bold", Calibri,
+      source-sans-pro, sans-serif;
+    font-weight: normal;
+    font-size: 1.2em;
+    line-height: 1.6em;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    min-height: 100svh;
+
+    display: grid;
+    grid-template-columns: min(14rem, 100%) 1fr;
+  }
+
+  main {
+    background-color: var(--bg-color);
+    padding: 4rem;
+    color: var(--text-color-dark);
+  }
+
+  nav {
+    background-color: var(--nav-bg-color);
+    color: var(--text-color);
+  }
+
+  ul {
+    --_transition-time: 300ms;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    margin-top: 2rem;
+    margin-left: 2rem;
+    display: grid;
+    gap: 0.5rem;
+    /* align-items: center; */
+  }
+
+  li {
+    text-align: center;
+    padding: 0.7em;
+    position: relative;
+    color: var(--text-color-dark);
+  }
+
+  li.active {
+    /* background-color: var(--bg-color); */
+    /* border-radius: 100vh 0 0 100vh; */
+    /* color: var(--text-color-dark); */
+  }
+
+  li.active .link-bg {
+    transform: scaleX(100%);
+    transition-delay: var(--_transition-time);
+  }
+
+  .link-bg {
+    transform: scaleX(0%);
+    transform-origin: right;
+
+    transition: transform var(--_transition-time);
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+
+    background-color: var(--bg-color);
+    border-radius: 100vh 0 0 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .link-bg::before,
+  .link-bg::after {
+    --_radius-size: 1.4rem;
+    content: "";
+    position: absolute;
+    background-color: var(--nav-bg-color);
+    width: var(--_radius-size);
+    height: var(--_radius-size);
+    border-radius: var(--_radius-size);
+    right: 0;
+    z-index: 1;
+  }
+
+  .link-bg::before {
+    top: 0;
+    transform: translateY(-100%);
+    border-radius: 0 0 var(--_radius-size) 0;
+    box-shadow: 0.55rem 0.55rem 0 0.5rem var(--bg-color);
+  }
+
+  .link-bg::after {
+    bottom: 0;
+    transform: translateY(100%);
+    border-radius: 0 var(--_radius-size) 0 0;
+    box-shadow: 0.55rem -0.55rem 0 0.5rem var(--bg-color);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    z-index: 2;
+    position: relative;
+  }
+</style>
