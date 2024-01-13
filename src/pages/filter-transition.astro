@@ -41,8 +41,8 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
           
           <ul class="food-list">
             {
-              foodList.map((foodItem) => (
-                <li class="food-item">
+              foodList.map((foodItem, i) => (
+                <li class="food-item" style={`view-transition-name: food-item-${i}`}>
                   <h3 class="food-name">{foodItem.name}</h3>
                   <div class="food-details">
                     {foodItem.kcal} kcal
@@ -56,7 +56,7 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
             }
           </ul>
         </article>
-        <aside>
+        <aside class="ref-links">
           <h3>Discover</h3>
           <div>
             <h4>Lorem ipsum dolor.</h4>
@@ -81,11 +81,21 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
 </html>
 
 <script>
+  declare global {
+  interface Document {
+    startViewTransition(callback: () => void): void;
+    // Add any additional properties or methods you need
+  }
+}
+
   function setInitialFilters() {
     if(window.location.hash) {
       const value = window.location.hash.substring(1);
-      setActiveFilter(value);
-      filterList(value);
+
+      document.startViewTransition(() => {
+        setActiveFilter(value);
+        filterList(value);
+      });
     }
   }
   setInitialFilters();
@@ -95,8 +105,10 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
       const btn = evt.target as HTMLElement;
       const filterValue = btn.dataset.value || '';
 
-      setActiveFilter(filterValue);
-      filterList(filterValue);
+      document.startViewTransition(() => {
+        setActiveFilter(filterValue);
+        filterList(filterValue);
+      })
     })
   })
 
@@ -117,9 +129,9 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
       const tags = [...item.querySelectorAll('.tag')].map(span => span.innerHTML)
 
       if (!value || tags.includes(value)) {
-        item.classList.remove('hidden');
+        item.removeAttribute('hidden')
       } else {
-        item.classList.add('hidden');
+        item.setAttribute('hidden', '')
       }
     })
   }
@@ -196,11 +208,12 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: var(--content-width);
+    margin-inline:2rem;
 
     display: flex;
   }
 
-  aside {
+  .ref-links {
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
     padding: 2rem 3rem;
@@ -210,6 +223,17 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
     max-width: 14rem;
   }
 
+  @media screen and (max-width: 870px) {
+    .container {
+      flex-direction: column;
+      gap: 4rem;
+    }
+
+    .ref-links {
+      max-width: initial;
+    }
+  }
+  
   .content {
     flex-grow: 1;
     display: flex;
@@ -254,7 +278,24 @@ const tags = [...new Set(foodList.flatMap((el) => el.tags))];
     text-transform: capitalize;
   }
 
-  .hidden {
-    display: none;
+
+
+</style>
+
+<style is:inline>
+  ::view-transition-group(root) {
+    animation-duration: 500ms;
+  }
+
+  ::view-transition-group(*) {
+    animation-duration: 500ms;
+  }
+
+  ::view-transition-old(root) {
+
+  }
+
+  ::view-transition-new(root) {
+
   }
 </style>
