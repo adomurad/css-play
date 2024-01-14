@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowing Border</title>
+  </head>
+  <body>
+    <div class="card"></div>
+  </body>
+</html>
+
+<style>
+  :root {
+    --c1: #052b2f;
+    --c2: #073438;
+    --c3: #0e4b50;
+    --c4: #2d8f85;
+    --c5: #637c54;
+
+    /* --c1: #390099;
+    --c2: #9e0059;
+    --c3: #ff0054;
+    --c4: #ff5400;
+    --c5: #ffbd00; */
+  }
+
+  @property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--c2);
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+  }
+
+  .card {
+    height: 60vh;
+    aspect-ratio: 1/1.5;
+    background-color: var(--c1);
+    border-radius: 0.5rem;
+    position: relative;
+  }
+
+  .card::before,
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    border-radius: inherit;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--c3),
+      var(--c4),
+      var(--c5),
+      var(--c4),
+      var(--c3)
+    );
+    animation: rotate 5s linear infinite;
+  }
+
+  .card::after {
+    filter: blur(3.5rem);
+  }
+
+  @keyframes rotate {
+    from {
+      --gradient-angle: 0deg;
+    }
+
+    to {
+      --gradient-angle: 360deg;
+    }
+  }
+</style>
