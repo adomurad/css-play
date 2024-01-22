@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Stacking</title>
+  </head>
+  <body>
+    <header>
+      <h1>Card Stacking</h1>
+    </header>
+    <div>
+      <section>
+        <h1>Perspiciatis ipsum</h1>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error atque
+          voluptas alias minus quod. Perspiciatis ipsum, dolorem autem nesciunt,
+          doloribus repellendus sit illo perferendis, fugit at iste repudiandae
+          rem dignissimos.
+        </p>
+      </section>
+      <section>
+        <h1>Iusto illum sit</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          quod aliquid atque libero eum qui pariatur reiciendis, ea eos, earum
+          cumque assumenda tenetur explicabo, iusto illum sit. Ipsum, quasi
+          voluptatum.
+        </p>
+      </section>
+      <section>
+        <h1>Lorem ipsum dolor</h1>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum
+          incidunt, odio hic perferendis assumenda similique nam. Eaque,
+          perferendis voluptate! Blanditiis at, ab dignissimos repellendus quo
+          voluptas deleniti iste nobis tempore.
+        </p>
+      </section>
+      <section>
+        <h1>Ratione fugit quod cumque</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Exercitationem, error ipsa, pariatur minima quisquam, odit dicta fuga
+          recusandae magnam atque mollitia perferendis quae? Consequuntur, ut id
+          ratione fugit quod cumque.
+        </p>
+      </section>
+      <section>
+        <h1>Minima consectetur eius?</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui,
+          nobis dolores magni, facere porro quae laborum adipisci est ad
+          molestiae corporis corrupti fugit minima consectetur eius? Magni, sed
+          beatae!
+        </p>
+      </section>
+    </div>
+    <footer>
+      <p>This is just a footer to make it hader</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --color-text-light: black;
+    --color-text-dark: white;
+
+    --c-header-bg: #031c25;
+    --c-header: var(--color-text-dark);
+
+    --c1-bg: #073b4c;
+    --c1: var(--color-text-dark);
+    --c2-bg: #118ab2;
+    --c2: var(--color-text-light);
+    --c3-bg: #06d6a0;
+    --c3: var(--color-text-light);
+    --c4-bg: #ffd166;
+    --c4: var(--color-text-light);
+    --c5-bg: #ef476f;
+    --c5: var(--color-text-light);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+      Consolas, "DejaVu Sans Mono", monospace;
+    font-weight: normal;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  header,
+  footer {
+    display: grid;
+    place-content: center;
+    padding-block: 4rem;
+    background-color: var(--c-header-bg);
+    color: var(--c-header);
+  }
+
+  section {
+    height: 100svh;
+    display: grid;
+    place-content: center;
+    position: sticky;
+    top: 0;
+  }
+
+  h1,
+  p {
+    max-width: 50rem;
+    margin-inline: 1rem;
+  }
+
+  section:nth-child(1) {
+    color: var(--c1);
+    background-color: var(--c1-bg);
+  }
+  section:nth-child(2) {
+    color: var(--c2);
+    background-color: var(--c2-bg);
+  }
+  section:nth-child(3) {
+    color: var(--c3);
+    background-color: var(--c3-bg);
+  }
+  section:nth-child(4) {
+    color: var(--c4);
+    background-color: var(--c4-bg);
+  }
+  section:nth-child(5) {
+    color: var(--c5);
+    background-color: var(--c5-bg);
+  }
+</style>
